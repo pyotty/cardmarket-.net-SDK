@@ -135,5 +135,6 @@ Dim lsa2 = mkm.Stock_FindArticle("jace", IdGame)
 
 ## Thank you
 If my code has helped you and you'd like give a donation
+
 [![donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UXPHYJYP8VP7Y)
 
