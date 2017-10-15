@@ -66,9 +66,9 @@
 - ~~Article Users~~ NotImplemented
 
   
-**Stock **
+**Stock**
 
-- GET - 	Returns the Article entities in the authenticated user's stock.
+- GET - Returns the Article entities in the authenticated user's stock.
 ```ruby
 	Dim lsa1 = mkm.Stock_List()
 ```
