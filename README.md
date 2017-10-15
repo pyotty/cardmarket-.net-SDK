@@ -92,27 +92,33 @@
 - PUT - Changes articles in the user's stock.
 ```ruby
 	Dim l2 As New List(Of Mkm.Objects.article)
-  Dim a2 As New Mkm.Objects.article With {
-  	.idArticle = r2.idArticle,
-    .idLanguage = Mkm.Enumerators.IdLanguage.Italian,
-    .count = 2,
-    .price = 100,
-    .condition = Mkm.Enumerators.Condition.NM.ToString()
-    }
-    l2.Add(a2)
-    Dim li2 As Mkm.Objects.updated = mkm.Stock_Update(l2)
+  	Dim a2 As New Mkm.Objects.article With {
+  		.idArticle = r2.idArticle,
+    		.idLanguage = Mkm.Enumerators.IdLanguage.Italian,
+    		.count = 2,
+    		.price = 100,
+    		.condition = Mkm.Enumerators.Condition.NM.ToString()
+    		}
+	l2.Add(a2)
+    	Dim li2 As Mkm.Objects.updated = mkm.Stock_Update(l2)
 ```
 
 - DELETE - Removes articles from the user's stock
 ```ruby
 	Dim l3 As New List(Of Mkm.Objects.article)
-  Dim a3 As New Mkm.Objects.article With {
-  	.idArticle = r2.idArticle,
-    .count = 1
-    }
+  	Dim a3 As New Mkm.Objects.article With {
+  		.idArticle = r2.idArticle,
+    		.count = 1
+    		}
 	l3.Add(a3)
 	Dim li3 = mkm.Stock_Delete(l3)
 ```
+
+- Find Stock Articles - Searches for and returns articles specified by the article's name and game.
+```ruby
+	Dim lsa2 = mkm.Stock_FindArticle("jace", IdGame)
+```
+
 - ~~Stock (File) - Returns a CSV file with all articles in the authenticated user's stock, further specified by a game and language.~~     NotImplemented
 
 - ~~Stock in Shopping Carts - Returns the Article entities of the authenticated user's stock that are currently in other user's shopping carts.~~ NotImplemented
@@ -120,8 +126,3 @@
 - ~~Stock Article - Returns a single Article entity in the authenticated user's stock specified by its article ID.~~ NotImplemented
 
 - ~~Change Stock Article Quantity - Changes quantities for articles in authenticated user's stock~~ NotImplemented
-
-- Find Stock Articles - Searches for and returns articles specified by the article's name and game.
-```ruby
-	Dim lsa2 = mkm.Stock_FindArticle("jace", IdGame)
-```
