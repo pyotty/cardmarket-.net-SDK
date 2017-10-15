@@ -48,7 +48,7 @@ Dim p = mkm.MarketPlace_Product(IdProduct)
 mkm.MarketPlace_ProductList("C:\temp\")
 ```
 
-~~Price Guides (File)~~ NotImplemented
+- ~~Price Guides (File)~~ NotImplemented
 
 - Find Products - Searches for products by a given search string
 ```ruby
@@ -60,15 +60,14 @@ Dim lp = mkm.MarketPlace_FindProducts("swamp", False, IdGame, Mkm.Enumerators.Id
 Dim la = mkm.MarketPlace_Articles(IdProduct)
 ```
 
-~~Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.~~ NotImplemented
+- ~~Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.~~ NotImplemented
+- ~~Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.~~ NotImplemented
 
-~~Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.~~ NotImplemented
+- ~~Users - Returns the User entity for the user specified by its ID or exact name.~~ NotImplemented
 
-~~Users - Returns the User entity for the user specified by its ID or exact name.~~ NotImplemented
+- ~~Find Users - Returns User entities for the users found.~~ NotImplemented
 
-~~Find Users - Returns User entities for the users found.~~ NotImplemented
-
-~~Article Users~~ NotImplemented
+- ~~Article Users~~ NotImplemented
 
   
   *** Stock ***
