@@ -5,6 +5,7 @@ Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/license
 Usage
 
   Const appToken = "your string"
+  
   Const appSecret = "your string"
   Const accessToken = "your string"
   Const accessSecret = "your string"
