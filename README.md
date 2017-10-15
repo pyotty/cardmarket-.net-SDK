@@ -21,7 +21,7 @@ Const accessSecret = "your string"
 
 **MarketPlace**
 
-  >Games - Returns all games supported by MKM and you can sell and buy products for.
+  >Games - Returns all games supported by MKM and you can sell and buy products for
 
   '''ruby
   Dim lg = mkm.Marketplace_Games
