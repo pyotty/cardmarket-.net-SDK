@@ -7,8 +7,6 @@ This library provide to communicate with the new MKM API v2.0.
 
 For more resources check https://www.mkmapi.eu/ws/documentation/API_2.0:Main_Page
 
-*Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/licenses/mit-license.php)*
-
 ## Usage
 
 ### Define yours 4 keys
