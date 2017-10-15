@@ -12,13 +12,13 @@ Const accessToken = "your string"
 Const accessSecret = "your string"
 ```
 
-> Inizialize class
+>Inizialize class
 ```
   Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret)
 ```
 
 >Call method
-  *** MarketPlace ***
+  ## MarketPlace
 
     >Games - Returns all games supported by MKM and you can sell and buy products for.
     '''
