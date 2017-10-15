@@ -18,16 +18,17 @@ Const accessSecret = "your string"
 ```
 
 >Call method
+
+
+
+>MarketPlace
     Games - Returns all games supported by MKM and you can sell and buy products for.
-
-###### MarketPlace
-
     '''ruby
     Dim lg = mkm.Marketplace_Games
     Dim IdGame = lg.game.Single(Function(f) f.abbreviation = "MtG").IdGame
     '''
 
-    >Expansions - Returns all expansions with single cards for the specified game.
+    Expansions - Returns all expansions with single cards for the specified game.
     '''ruby
     Dim le = mkm.Marketplace_Expansions(IdGame)
     Dim IdExp = le.expansion.Single(Function(f) f.enName = "Onslaught").idExpansion
