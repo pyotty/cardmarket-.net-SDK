@@ -1,14 +1,19 @@
-A SDK for Cardmarket RESTful API v 2.0
+## A SDK for Cardmarket RESTful API v 2.0
 
-Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/licenses/mit-license.php)
+__ Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/licenses/mit-license.php)
 
-*** Usage *** 
-  Const appToken = "your string"
-  Const appSecret = "your string"
-  Const accessToken = "your string"
-  Const accessSecret = "your string"
-  
+### Usage
+
+```
+$ Const appToken = "your string"
+$ Const appSecret = "your string"
+$ Const accessToken = "your string"
+$ Const accessSecret = "your string"
+```
+
+```
   Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret)
+```
 
   *******************
   *** MarketPlace ***
