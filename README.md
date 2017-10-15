@@ -15,11 +15,12 @@ Const appToken = "your string"
 Const appSecret = "your string"
 Const accessToken = "your string"
 Const accessSecret = "your string"
+Const sandBox = false			'Currently not available from MKM
 ```
 
 ### Inizialize class
 ```ruby
-Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret)
+Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret, sandBox)
 ```
 
 ### Call method
