@@ -1,0 +1,1 @@
+"# cardmarket-.net-SDK" 
