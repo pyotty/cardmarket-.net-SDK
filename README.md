@@ -13,7 +13,7 @@ Const accessSecret = "your string"
 ```
 
 >Inizialize class
-```
+```ruby
   Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret)
 ```
 
@@ -21,42 +21,42 @@ Const accessSecret = "your string"
   ## MarketPlace
 
     >Games - Returns all games supported by MKM and you can sell and buy products for.
-    '''
+    '''ruby
     Dim lg = mkm.Marketplace_Games
     Dim IdGame = lg.game.Single(Function(f) f.abbreviation = "MtG").IdGame
     '''
 
     >Expansions - Returns all expansions with single cards for the specified game.
-    '''
+    '''ruby
     Dim le = mkm.Marketplace_Expansions(IdGame)
     Dim IdExp = le.expansion.Single(Function(f) f.enName = "Onslaught").idExpansion
     '''
 
     >Expansion Singles - Returns all single cards for the specified expansion.
-    '''
+    '''ruby
     Dim ls = mkm.Marketplace_ExpansionSingles(IdExp)
     Dim IdProduct = ls.single.First(Function(f) f.enName = "Wellwisher").idProduct
     '''
     
     >Products - Returns a product specified by its ID
-    '''
+    '''ruby
     Dim p = mkm.MarketPlace_Product(IdProduct)
     '''
 
     >Product List (File) - Returns a CSV file with all relevant products available at Cardmarket.
-    '''
+    '''ruby
     mkm.MarketPlace_ProductList("C:\temp\")
     '''
 
     ~~Price Guides (File)~~ NotImplemented
 
     >Find Products - Searches for products by a given search string
-    '''
+    '''ruby
     Dim lp = mkm.MarketPlace_FindProducts("swamp", False, IdGame, Mkm.Enumerators.IdLanguage.English)
     '''
 
     >Articles - Returns all available articles for a specified product.
-    '''
+    '''ruby
     Dim la = mkm.MarketPlace_Articles(IdProduct)
     '''
 
