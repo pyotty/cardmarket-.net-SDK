@@ -64,12 +64,12 @@ Dim lp = mkm.MarketPlace_FindProducts("swamp", False, IdGame, Mkm.Enumerators.Id
 Dim la = mkm.MarketPlace_Articles(IdProduct)
 ```
 
-- ~~Price Guides (File)~~ NotImplemented
-- ~~Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.~~ NotImplemented
-- ~~Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.~~ NotImplemented
-- ~~Users - Returns the User entity for the user specified by its ID or exact name.~~ NotImplemented
-- ~~Find Users - Returns User entities for the users found.~~ NotImplemented
-- ~~Article Users~~ NotImplemented
+- ~~Price Guides (File)~~ not yet implemented
+- ~~Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.~~ not yet implemented
+- ~~Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.~~ not yet implemented
+- ~~Users - Returns the User entity for the user specified by its ID or exact name.~~ not yet implemented
+- ~~Find Users - Returns User entities for the users found.~~ not yet implemented
+- ~~Article Users~~ not yet implemented
 
   
 **Stock**
@@ -125,13 +125,13 @@ Dim li3 = mkm.Stock_Delete(l3)
 Dim lsa2 = mkm.Stock_FindArticle("jace", IdGame)
 ```
 
-- ~~Stock (File) - Returns a CSV file with all articles in the authenticated user's stock, further specified by a game and language.~~     NotImplemented
+- ~~Stock (File) - Returns a CSV file with all articles in the authenticated user's stock, further specified by a game and language.~~     not yet implemented
 
-- ~~Stock in Shopping Carts - Returns the Article entities of the authenticated user's stock that are currently in other user's shopping carts.~~ NotImplemented
+- ~~Stock in Shopping Carts - Returns the Article entities of the authenticated user's stock that are currently in other user's shopping carts.~~ not yet implemented
 
-- ~~Stock Article - Returns a single Article entity in the authenticated user's stock specified by its article ID.~~ NotImplemented
+- ~~Stock Article - Returns a single Article entity in the authenticated user's stock specified by its article ID.~~ not yet implemented
 
-- ~~Change Stock Article Quantity - Changes quantities for articles in authenticated user's stock~~ NotImplemented
+- ~~Change Stock Article Quantity - Changes quantities for articles in authenticated user's stock~~ not yet implemented
 
 ## Thank you
 If my code has helped you and you'd like give a donation
