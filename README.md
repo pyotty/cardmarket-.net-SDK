@@ -1,69 +1,76 @@
 ## A SDK for Cardmarket RESTful API v 2.0
 
-__ Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/licenses/mit-license.php)
+*Copyright (c) 2017 Licensed under the MIT license (http://opensource.org/licenses/mit-license.php)*
 
 ### Usage
 
+>Define yours 4 keys
 ```
-$ Const appToken = "your string"
-$ Const appSecret = "your string"
-$ Const accessToken = "your string"
-$ Const accessSecret = "your string"
+Const appToken = "your string"
+Const appSecret = "your string"
+Const accessToken = "your string"
+Const accessSecret = "your string"
 ```
 
+> Inizialize class
 ```
   Dim mkm As New Mkm(appToken, appSecret, accessToken, accessSecret)
 ```
 
-  *******************
+>Call method
   *** MarketPlace ***
-  *******************
 
-    Games - Returns all games supported by MKM and you can sell and buy products for.
+    >Games - Returns all games supported by MKM and you can sell and buy products for.
+    '''
     Dim lg = mkm.Marketplace_Games
     Dim IdGame = lg.game.Single(Function(f) f.abbreviation = "MtG").IdGame
+    '''
 
-    Expansions - Returns all expansions with single cards for the specified game.
+    >Expansions - Returns all expansions with single cards for the specified game.
+    '''
     Dim le = mkm.Marketplace_Expansions(IdGame)
     Dim IdExp = le.expansion.Single(Function(f) f.enName = "Onslaught").idExpansion
+    '''
 
-    Expansion Singles - Returns all single cards for the specified expansion.
+    >Expansion Singles - Returns all single cards for the specified expansion.
+    '''
     Dim ls = mkm.Marketplace_ExpansionSingles(IdExp)
     Dim IdProduct = ls.single.First(Function(f) f.enName = "Wellwisher").idProduct
-
-    Products - Returns a product specified by its ID
+    '''
+    
+    >Products - Returns a product specified by its ID
+    '''
     Dim p = mkm.MarketPlace_Product(IdProduct)
+    '''
 
-    Product List (File) - Returns a CSV file with all relevant products available at Cardmarket.
+    >Product List (File) - Returns a CSV file with all relevant products available at Cardmarket.
+    '''
     mkm.MarketPlace_ProductList("C:\temp\")
+    '''
 
-    Price Guides (File)
-    NotImplemented
+    ~~Price Guides (File)~~ NotImplemented
 
-    Find Products - Searches for products by a given search string
+    >Find Products - Searches for products by a given search string
+    '''
     Dim lp = mkm.MarketPlace_FindProducts("swamp", False, IdGame, Mkm.Enumerators.IdLanguage.English)
+    '''
 
-    Articles - Returns all available articles for a specified product.
+    >Articles - Returns all available articles for a specified product.
+    '''
     Dim la = mkm.MarketPlace_Articles(IdProduct)
+    '''
 
-    Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.
-    NotImplemented
+    ~~Metaproducts - Returns the Metaproduct entity for the metaproduct specified by its ID.~~ NotImplemented
 
-    Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.
-    NotImplemented
+    ~~Find Metaproducts - Searches for metaproducts and returns the Metaproduct entity of the metaproducts found.~~ NotImplemented
 
-    Users - Returns the User entity for the user specified by its ID or exact name.
-    NotImplemented
+    ~~Users - Returns the User entity for the user specified by its ID or exact name.~~ NotImplemented
 
-    Find Users - Returns User entities for the users found.
-    NotImplemented
+    ~~Find Users - Returns User entities for the users found.~~ NotImplemented
 
-    Article Users - 
-    NotImplemented
+    ~~Article Users~~ NotImplemented
 
-  *** MarketPlace ***
-
-  *************
+  
   *** Stock ***
   *************
 
