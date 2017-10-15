@@ -1,5 +1,4 @@
-﻿
-Partial Public Class Mkm
+﻿Partial Public Class Mkm
 
     Private _LimitCount As Integer
     Public ReadOnly Property LimitCount As Integer
@@ -12,13 +11,15 @@ Partial Public Class Mkm
     Private ReadOnly appSecret As String
     Private ReadOnly accessToken As String
     Private ReadOnly accessSecret As String
+    Private ReadOnly BaseUrl = "https://www.mkmapi.eu/ws/v2.0"
 
 
-    Sub New(appToken As String, appSecret As String, accessToken As String, accessSecret As String)
+    Sub New(appToken As String, appSecret As String, accessToken As String, accessSecret As String, SandBox As Boolean)
         Me.appToken = appToken
         Me.appSecret = appSecret
         Me.accessToken = accessToken
         Me.accessSecret = accessSecret
+        Me.BaseUrl = If(SandBox, "https://sandbox.mkmapi.eu/ws/v2.0/", "https://www.mkmapi.eu/ws/v2.0")
     End Sub
 
 #Region "Funzioni"
@@ -30,7 +31,7 @@ Partial Public Class Mkm
     ''' </summary>
     ''' <returns></returns>
     Public Function Marketplace_Games() As Objects.RootGame
-        Return ConsumeAPI(Of Objects.RootGame)(New Uri("https://www.mkmapi.eu/ws/v2.0/output.json/games"), "GET")
+        Return ConsumeAPI(Of Objects.RootGame)(New Uri(BaseUrl, "games"), "GET")
     End Function
 
     ''' <summary>
@@ -39,7 +40,7 @@ Partial Public Class Mkm
     ''' <param name="IdGame"></param>
     ''' <returns></returns>
     Public Function Marketplace_Expansions(IdGame As Integer) As Objects.RootExpansions
-        Return ConsumeAPI(Of Objects.RootExpansions)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/games/{IdGame}/expansions"), "GET")
+        Return ConsumeAPI(Of Objects.RootExpansions)(New Uri(BaseUrl, $"{IdGame}/expansions"), "GET")
     End Function
 
     ''' <summary>
@@ -48,7 +49,7 @@ Partial Public Class Mkm
     ''' <param name="idExpansion"></param>
     ''' <returns></returns>
     Public Function Marketplace_ExpansionSingles(idExpansion As Integer) As Objects.RootExpansionSingle
-        Return ConsumeAPI(Of Objects.RootExpansionSingle)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/expansions/{idExpansion}/singles"), "GET")
+        Return ConsumeAPI(Of Objects.RootExpansionSingle)(New Uri(BaseUrl, $"expansions/{idExpansion}/singles"), "GET")
     End Function
 
     ''' <summary>
@@ -57,7 +58,7 @@ Partial Public Class Mkm
     ''' <param name="idProduct"></param>
     ''' <returns></returns>
     Public Function MarketPlace_Product(idProduct As Integer) As Objects.RootProduct
-        Return ConsumeAPI(Of Objects.RootProduct)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/products/{idProduct}"), "GET")
+        Return ConsumeAPI(Of Objects.RootProduct)(New Uri(BaseUrl, $"products/{idProduct}"), "GET")
     End Function
 
     ''' <summary>
@@ -65,7 +66,7 @@ Partial Public Class Mkm
     ''' </summary>
     ''' <param name="path"></param>
     Public Sub MarketPlace_ProductList(path As String)
-        Dim pge = ConsumeAPI(Of Objects.PriceGuideEntity)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/productlist"), "GET")
+        Dim pge = ConsumeAPI(Of Objects.PriceGuideEntity)(New Uri(BaseUrl, $"productlist"), "GET")
 
         Dim b As Byte() = Convert.FromBase64String(pge.productsfile)
 
@@ -96,7 +97,7 @@ Partial Public Class Mkm
                                              Optional start As Integer? = Nothing,
                                              Optional maxResults As Integer? = Nothing) As Objects.Products
 
-        Dim url As New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/products/find?search={search}")
+        Dim url As New Uri(BaseUrl, $"products/find?search={search}")
         '{"&exact={exact}&idGame={idGame}&idLanguage={idLanguage}&start={start}&maxResults={maxResults}")
 
         Dim uriBuilder As New UriBuilder(url)
@@ -140,7 +141,7 @@ Partial Public Class Mkm
                                          Optional isAltered As Boolean? = Nothing, '(true|false)
                                          Optional minAvailable As Integer? = Nothing) As Objects.RootArticles
 
-        Dim url As New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/articles/{idProduct}")
+        Dim url As New Uri(BaseUrl, $"articles/{idProduct}")
 
         Dim uriBuilder As New UriBuilder(url)
         Dim query = Web.HttpUtility.ParseQueryString(uriBuilder.Query)
@@ -211,16 +212,21 @@ Partial Public Class Mkm
     ''' </summary>
     ''' <returns></returns>
     Public Function Stock_List() As Objects.articles
-        Return ConsumeAPI(Of Objects.articles)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/stock"), "GET")
+        Return ConsumeAPI(Of Objects.articles)(New Uri(BaseUrl, "stock"), "GET")
     End Function
 
+    ''' <summary>
+    ''' Adds new articles to the user's stock
+    ''' </summary>
+    ''' <param name="l"></param>
+    ''' <returns></returns>
     Public Function Stock_Add(l As List(Of Objects.article)) As Objects.inserted
 
         Dim a As New Objects.articles
         a.articles.AddRange(l)
 
         Const method = "POST"
-        Dim url As New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/stock")
+        Dim url As New Uri(BaseUrl, "stock")
 
         Dim request = Net.WebRequest.CreateHttp(url)
         Dim header As New OAuthHeader(Me.appToken, Me.appSecret, Me.accessToken, Me.accessSecret)
@@ -269,12 +275,17 @@ Partial Public Class Mkm
         End Using
     End Function
 
+    ''' <summary>
+    ''' Changes articles in the user's stock.
+    ''' </summary>
+    ''' <param name="l"></param>
+    ''' <returns></returns>
     Public Function Stock_Update(l As List(Of Objects.article)) As Objects.updated
         Dim a As New Objects.articles
         a.articles.AddRange(l)
 
         Const method = "PUT"
-        Dim url As New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/stock")
+        Dim url As New Uri(BaseUrl, "stock")
 
         Dim request = Net.WebRequest.CreateHttp(url)
         Dim header As New OAuthHeader(Me.appToken, Me.appSecret, Me.accessToken, Me.accessSecret)
@@ -322,12 +333,17 @@ Partial Public Class Mkm
         End Using
     End Function
 
+    ''' <summary>
+    ''' Removes articles from the user's stock.
+    ''' </summary>
+    ''' <param name="l"></param>
+    ''' <returns></returns>
     Public Function Stock_Delete(l As List(Of Objects.article)) As Objects.deleted
         Dim a As New Objects.articles
         a.articles.AddRange(l)
 
         Const method = "DELETE"
-        Dim url As New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/stock")
+        Dim url As New Uri(BaseUrl, "stock")
 
         Dim request = Net.WebRequest.CreateHttp(url)
         Dim header As New OAuthHeader(Me.appToken, Me.appSecret, Me.accessToken, Me.accessSecret)
@@ -382,7 +398,7 @@ Partial Public Class Mkm
     ''' <param name="IdGame"></param>
     ''' <returns></returns>
     Public Function Stock_FindArticle(name As String, IdGame As Integer) As Objects.RootArticles
-        Return ConsumeAPI(Of Objects.RootArticles)(New Uri($"https://www.mkmapi.eu/ws/v2.0/output.json/stock/articles/{name}/{IdGame}"), "GET")
+        Return ConsumeAPI(Of Objects.RootArticles)(New Uri(BaseUrl, $"stock/articles/{name}/{IdGame}"), "GET")
     End Function
 
 #End Region
