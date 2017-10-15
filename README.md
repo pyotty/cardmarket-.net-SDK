@@ -23,8 +23,8 @@ Const accessSecret = "your string"
 
 - Games - Returns all games supported by MKM and you can sell and buy products for
 ```ruby
-Dim lg = mkm.Marketplace_Games
-Dim IdGame = lg.game.Single(Function(f) f.abbreviation = "MtG").IdGame
+  Dim lg = mkm.Marketplace_Games
+  Dim IdGame = lg.game.Single(Function(f) f.abbreviation = "MtG").IdGame
 ```
 - Expansions - Returns all expansions with single cards for the specified game.
 ```ruby
