@@ -5,7 +5,7 @@
 ### Usage
 
 >Define yours 4 keys
-```sh
+```ruby
 Const appToken = "your string"
 Const appSecret = "your string"
 Const accessToken = "your string"
